@@ -1,0 +1,20 @@
+dependencies {
+    // Project Modules
+    compile project(':' + rootProject.name + '-api')
+
+    // Commons Lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
+
+    // HttpClient
+    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.7.2'
+
+}
+
+// Artifact Info
+project.ext {
+    artifactName = 'GCF4J-Core'
+    artifactDescription = 'GCF4J - Core'
+}
+
+// Deployment Script
+apply from: '../deployment.gradle'
