@@ -1,0 +1,12 @@
+dependencies {
+
+}
+
+// Artifact Info
+project.ext {
+    artifactName = 'GCF4J-API'
+    artifactDescription = 'GCF4J - API'
+}
+
+// Deployment Script
+apply from: '../deployment.gradle'

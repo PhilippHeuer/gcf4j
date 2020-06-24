@@ -1,0 +1,8 @@
+include 'api'
+include 'core'
+include 'springboot-starter'
+
+rootProject.name = 'gcf4j'
+rootProject.children.each {
+    it.name = rootProject.name + "-" + it.name
+}

@@ -1,0 +1,16 @@
+dependencies {
+    // Project Modules
+    api project(':' + rootProject.name + '-core')
+
+    // SpringBoot
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.3.1.RELEASE'
+}
+
+// Artifact Info
+project.ext {
+    artifactName = 'GCF4J-SpringBoot-Starter'
+    artifactDescription = 'GCF4J - SpringBoot Starter'
+}
+
+// Deployment Script
+apply from: '../deployment.gradle'
