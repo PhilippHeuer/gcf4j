@@ -1,6 +1,7 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
 import com.github.philippheuer.gcf4j.api.domain.IMessageAuthor;
+import com.github.philippheuer.gcf4j.api.domain.IRole;
 import lombok.*;
 
 import java.util.Set;
@@ -23,5 +24,9 @@ public class MessageAuthor implements IMessageAuthor {
     private boolean bot = false;
 
     // Roles
-    private Set<String> roles;
+    private Set<IRole> roles;
+
+    // Global Roles
+    private Set<String> globalRoles;
+
 }

@@ -10,6 +10,8 @@ public interface IMessageAuthor {
 
     boolean isBot();
 
-    Set<String> getRoles();
+    Set<IRole> getRoles();
+
+    Set<String> getGlobalRoles();
 
 }
