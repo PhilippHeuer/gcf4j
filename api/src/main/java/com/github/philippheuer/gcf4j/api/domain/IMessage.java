@@ -6,6 +6,11 @@ import java.util.List;
 public interface IMessage {
 
     /**
+     * the unique id of the message
+     */
+    String getId();
+
+    /**
      * the message text
      */
     String getText();

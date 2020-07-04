@@ -18,6 +18,11 @@ public class Message implements IMessage {
     /**
      * {@inheritDoc}
      */
+    private String id;
+
+    /**
+     * {@inheritDoc}
+     */
     private String text;
 
     /**
