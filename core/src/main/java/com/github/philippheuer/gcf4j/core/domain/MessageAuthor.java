@@ -13,20 +13,55 @@ import java.util.Set;
 @Builder
 public class MessageAuthor implements IMessageAuthor {
 
-    // Unique UserId
+    /**
+     * {@inheritDoc}
+     */
     private String id;
 
-    // Display Name
+    /**
+     * {@inheritDoc}
+     */
     private String name;
 
-    // Is Bot?
+    /**
+     * {@inheritDoc}
+     */
+    private String displayName;
+
+    /**
+     * {@inheritDoc}
+     */
+    private String avatarUrl;
+
+    /**
+     * {@inheritDoc}
+     */
+    private String mention;
+
+    /**
+     * {@inheritDoc}
+     */
+    private String status;
+
+    /**
+     * {@inheritDoc}
+     */
     @Builder.Default
     private boolean bot = false;
 
-    // Roles
+    /**
+     * {@inheritDoc}
+     */
     private Set<IRole> roles;
 
-    // Global Roles
+    /**
+     * {@inheritDoc}
+     */
     private Set<String> globalRoles;
+
+    /**
+     * {@inheritDoc}
+     */
+    private Object origin;
 
 }

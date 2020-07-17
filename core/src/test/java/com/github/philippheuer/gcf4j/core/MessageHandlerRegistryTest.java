@@ -38,7 +38,7 @@ public class MessageHandlerRegistryTest {
 
         MessageInstance messageInstance = new MessageInstance("test", "1");
         MessageChannel commandChannel = new MessageChannel("general", "General");
-        MessageAuthor commandAuthor = new MessageAuthor("1", "TestUser", true, Set.of(Role.builder().name("admin").build()), Set.of());
+        MessageAuthor commandAuthor = MessageAuthor.builder().id("1").name("TestUser").bot(true).roles(Set.of(Role.builder().name("admin").build())).globalRoles(Set.of()).build();
         Message message = Message.builder().text("Hello World!").build();
         MessageContext commandContext = new MessageContext(messageInstance, commandChannel, commandAuthor, message, dummyResponder);
 
