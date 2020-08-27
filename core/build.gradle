@@ -8,6 +8,8 @@ dependencies {
     // HttpClient
     compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.7.2'
 
+    // Jackson
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.11.2'
 }
 
 // Artifact Info

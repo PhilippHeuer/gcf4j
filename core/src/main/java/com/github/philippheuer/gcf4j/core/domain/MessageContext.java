@@ -1,5 +1,6 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.philippheuer.gcf4j.api.domain.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -26,6 +27,7 @@ public class MessageContext implements IMessageContext {
 	private final IMessage message;
 
 	// Message Responder
+	@JsonIgnore
 	private final IMessageResponder responder;
 
 	/**

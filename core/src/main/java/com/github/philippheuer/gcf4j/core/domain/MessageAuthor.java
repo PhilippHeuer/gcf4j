@@ -1,5 +1,6 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.philippheuer.gcf4j.api.domain.IMessageAuthor;
 import com.github.philippheuer.gcf4j.api.domain.IRole;
 import lombok.*;
@@ -62,6 +63,7 @@ public class MessageAuthor implements IMessageAuthor {
     /**
      * {@inheritDoc}
      */
+    @JsonIgnore
     private Object origin;
 
 }
