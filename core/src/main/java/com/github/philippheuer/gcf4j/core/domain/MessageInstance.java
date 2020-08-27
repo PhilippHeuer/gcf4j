@@ -1,24 +1,22 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
 import com.github.philippheuer.gcf4j.api.domain.IMessageInstance;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
 public class MessageInstance implements IMessageInstance {
 
     // Type
-    private final String type;
+    private String type;
 
     // Unique Id
-    private final String id;
+    private String id;
 
     // Key
-    private final String key;
+    private String key;
 
     @Builder
     public MessageInstance(String type, String id) {

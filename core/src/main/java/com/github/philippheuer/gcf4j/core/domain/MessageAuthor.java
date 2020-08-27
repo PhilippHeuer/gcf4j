@@ -11,6 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
 @Builder
 public class MessageAuthor implements IMessageAuthor {
 
@@ -54,11 +55,6 @@ public class MessageAuthor implements IMessageAuthor {
      * {@inheritDoc}
      */
     private Set<IRole> roles;
-
-    /**
-     * {@inheritDoc}
-     */
-    private Set<String> globalRoles;
 
     /**
      * {@inheritDoc}

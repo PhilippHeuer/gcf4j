@@ -10,6 +10,7 @@ import java.io.InputStream;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
 @Builder
 public class MessageAttachment implements IMessageAttachment {
 

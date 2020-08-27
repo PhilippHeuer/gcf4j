@@ -2,9 +2,7 @@ package com.github.philippheuer.gcf4j.core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.philippheuer.gcf4j.api.domain.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * Provides information about the context in which a command was executed.
@@ -12,23 +10,25 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
+@NoArgsConstructor
+@Builder
 public class MessageContext implements IMessageContext {
 
 	// Instance
-	private final IMessageInstance instance;
+	private IMessageInstance instance;
 
 	// Channel on the instance
-	private final IMessageChannel channel;
+	private IMessageChannel channel;
 
 	// Author
-	private final IMessageAuthor author;
+	private IMessageAuthor author;
 
 	// Message
-	private final IMessage message;
+	private IMessage message;
 
 	// Message Responder
 	@JsonIgnore
-	private final IMessageResponder responder;
+	private IMessageResponder responder;
 
 	/**
 	 * Command Context

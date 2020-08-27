@@ -18,6 +18,11 @@ public class Role implements IRole {
     /**
      * {@inheritDoc}
      */
+    private String scope;
+
+    /**
+     * {@inheritDoc}
+     */
     private String name;
 
 }

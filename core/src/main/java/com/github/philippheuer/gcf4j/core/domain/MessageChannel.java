@@ -7,6 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
 @Builder
 public class MessageChannel implements IMessageChannel {
 

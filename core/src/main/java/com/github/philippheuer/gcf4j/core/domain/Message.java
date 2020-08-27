@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
 @Builder
 public class Message implements IMessage {
 

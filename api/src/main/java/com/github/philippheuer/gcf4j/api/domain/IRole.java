@@ -4,6 +4,8 @@ public interface IRole {
 
     String getId();
 
+    String getScope();
+
     String getName();
 
 }

@@ -45,11 +45,6 @@ public interface IMessageAuthor {
     Set<IRole> getRoles();
 
     /**
-     * get users global roles
-     */
-    Set<String> getGlobalRoles();
-
-    /**
      * get origin
      */
     Object getOrigin();
