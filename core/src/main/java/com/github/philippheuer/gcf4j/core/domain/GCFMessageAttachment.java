@@ -1,6 +1,6 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
-import com.github.philippheuer.gcf4j.api.domain.IMessageAttachment;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageAttachment;
 import lombok.*;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -12,7 +12,7 @@ import java.io.InputStream;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Builder
-public class MessageAttachment implements IMessageAttachment {
+public class GCFMessageAttachment implements IGCFMessageAttachment {
 
     private static OkHttpClient httpClient = new OkHttpClient();
 

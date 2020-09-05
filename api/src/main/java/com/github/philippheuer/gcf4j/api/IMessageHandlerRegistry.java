@@ -1,6 +1,6 @@
 package com.github.philippheuer.gcf4j.api;
 
-import com.github.philippheuer.gcf4j.api.domain.IMessageContext;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 
 public interface IMessageHandlerRegistry {
 
@@ -9,6 +9,6 @@ public interface IMessageHandlerRegistry {
      *
      * @param ctx The context to give to the command function.
      */
-    void call(IMessageContext ctx);
+    void call(IGCFMessageContext ctx);
 
 }

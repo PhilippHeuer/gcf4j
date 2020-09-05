@@ -1,7 +1,7 @@
 package com.github.philippheuer.gcf4j.core.limiter;
 
 import com.github.philippheuer.gcf4j.api.IExecutionLimiter;
-import com.github.philippheuer.gcf4j.api.domain.IMessageContext;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 import org.apache.commons.lang3.ArrayUtils;
 
 /**
@@ -19,7 +19,7 @@ public class UserLimiter implements IExecutionLimiter {
      * {@inheritDoc}
      */
     @Override
-    public boolean check(IMessageContext ctx) {
+    public boolean check(IGCFMessageContext ctx) {
         return ArrayUtils.contains(userIds, null);
     }
 

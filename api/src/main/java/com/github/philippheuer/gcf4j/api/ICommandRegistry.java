@@ -1,6 +1,6 @@
 package com.github.philippheuer.gcf4j.api;
 
-import com.github.philippheuer.gcf4j.api.domain.IMessageContext;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 
 import java.util.Set;
 
@@ -11,7 +11,7 @@ public interface ICommandRegistry {
      *
      * @param ctx The context to give to the command function.
      */
-    void call(IMessageContext ctx);
+    void call(IGCFMessageContext ctx);
 
     /**
      * Gets the default command limiters

@@ -3,7 +3,7 @@ package com.github.philippheuer.gcf4j.api.domain;
 import java.awt.*;
 import java.util.List;
 
-public interface IMessageEmbed {
+public interface IGCFMessageEmbed {
 
     String getTitle();
 
@@ -13,6 +13,6 @@ public interface IMessageEmbed {
 
     Color getColor();
 
-    List<IMessageEmbedField> getFields();
+    List<IGCFMessageEmbedField> getFields();
 
 }

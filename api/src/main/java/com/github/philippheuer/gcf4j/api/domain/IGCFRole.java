@@ -1,6 +1,6 @@
 package com.github.philippheuer.gcf4j.api.domain;
 
-public interface IRole {
+public interface IGCFRole {
 
     String getId();
 

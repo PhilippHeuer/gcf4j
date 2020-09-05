@@ -21,7 +21,7 @@ public class MessageHandlerRegistryTest {
     @Test
     public void test() {
         // register
-        MessageHandler printLogHandler = MessageHandler.builder()
+        GCFMessageHandler printLogHandler = GCFMessageHandler.builder()
                 .handler(ctx -> {
                     // command code
                     log.info("Logging Message: {}", ctx.getMessage().getText());
@@ -33,14 +33,14 @@ public class MessageHandlerRegistryTest {
         messageHandlerRegistry.call(getMessageContext());
     }
 
-    private MessageContext getMessageContext() {
+    private GCFMessageContext getMessageContext() {
         DummyResponder dummyResponder = new DummyResponder();
 
-        MessageInstance messageInstance = new MessageInstance("test", "1");
-        MessageChannel commandChannel = new MessageChannel("general", "General");
-        MessageAuthor commandAuthor = MessageAuthor.builder().id("1").name("TestUser").bot(true).roles(Set.of(Role.builder().name("admin").build())).build();
-        Message message = Message.builder().text("Hello World!").build();
-        MessageContext commandContext = new MessageContext(messageInstance, commandChannel, commandAuthor, message, dummyResponder);
+        GCFInstance messageInstance = new GCFInstance("test", "1");
+        GCFChannel commandChannel = new GCFChannel("general", "General");
+        GCFMember commandAuthor = GCFMember.builder().id("1").name("TestUser").bot(true).roles(Set.of(GCFRole.builder().name("admin").build())).build();
+        GCFMessage message = GCFMessage.builder().text("Hello World!").build();
+        GCFMessageContext commandContext = new GCFMessageContext(messageInstance, commandChannel, commandAuthor, message, dummyResponder);
 
         return commandContext;
     }

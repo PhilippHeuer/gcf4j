@@ -2,8 +2,8 @@ package com.github.philippheuer.gcf4j.core;
 
 import com.github.philippheuer.gcf4j.api.IExecutionLimiter;
 import com.github.philippheuer.gcf4j.api.IMessageHandlerRegistry;
-import com.github.philippheuer.gcf4j.api.domain.IMessageContext;
-import com.github.philippheuer.gcf4j.api.domain.IMessageHandler;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageHandler;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,7 +14,7 @@ import java.util.Set;
 public class MessageHandlerRegistry implements IMessageHandlerRegistry {
 
     // holds all registered message handlers
-    private final Set<IMessageHandler> handlers = new HashSet<>();
+    private final Set<IGCFMessageHandler> handlers = new HashSet<>();
 
     // holds the default execution limiters
     @Getter
@@ -25,7 +25,7 @@ public class MessageHandlerRegistry implements IMessageHandlerRegistry {
      *
      * @param handler The command handler.
      */
-    public void register(IMessageHandler handler) {
+    public void register(IGCFMessageHandler handler) {
         log.info("Registered message handler {}", handler.getClass().getSimpleName());
         handlers.add(handler);
     }
@@ -33,7 +33,7 @@ public class MessageHandlerRegistry implements IMessageHandlerRegistry {
     /**
      * {@inheritDoc}
      */
-    public void call(IMessageContext ctx) {
+    public void call(IGCFMessageContext ctx) {
         if (defaultLimiters != null) {
             for (IExecutionLimiter limiter : defaultLimiters) {
                 if (!limiter.check(ctx)) {

@@ -2,7 +2,7 @@ package com.github.philippheuer.gcf4j.api.domain;
 
 import java.util.Set;
 
-public interface IMessageAuthor {
+public interface IGCFMember {
 
     /**
      * Unique User Id
@@ -42,7 +42,7 @@ public interface IMessageAuthor {
     /**
      * get user roles
      */
-    Set<IRole> getRoles();
+    Set<IGCFRole> getRoles();
 
     /**
      * get origin

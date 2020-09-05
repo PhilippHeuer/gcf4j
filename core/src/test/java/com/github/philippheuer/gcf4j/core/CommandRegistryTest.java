@@ -26,7 +26,7 @@ public class CommandRegistryTest {
                 .aliases(Set.of("p"))
                 .onExecution(ctx -> {
                     // command code
-                    ctx.getResponder().sendMessage(ctx, Message.builder().text("Hello World!").build());
+                    ctx.getResponder().sendMessage(ctx, GCFMessage.builder().text("Hello World!").build());
                 })
                 .build();
         commandRegistry.register(ping);
@@ -35,14 +35,14 @@ public class CommandRegistryTest {
         commandRegistry.call(getCommandContext());
     }
 
-    private MessageContext getCommandContext() {
+    private GCFMessageContext getCommandContext() {
         DummyResponder dummyResponder = new DummyResponder();
 
-        MessageInstance messageInstance = MessageInstance.builder().type("test").id("1").build();
-        MessageChannel commandChannel = MessageChannel.builder().id("general").name("General").build();
-        MessageAuthor commandAuthor = MessageAuthor.builder().id("1").name("TestUser").bot(true).roles(Set.of(Role.builder().name("admin").build())).build();
-        Message message = Message.builder().text("Hello World!").command("ping").build();
-        MessageContext commandContext = new MessageContext(messageInstance, commandChannel, commandAuthor, message, dummyResponder);
+        GCFInstance messageInstance = GCFInstance.builder().type("test").id("1").build();
+        GCFChannel commandChannel = GCFChannel.builder().id("general").name("General").build();
+        GCFMember commandAuthor = GCFMember.builder().id("1").name("TestUser").bot(true).roles(Set.of(GCFRole.builder().name("admin").build())).build();
+        GCFMessage message = GCFMessage.builder().text("Hello World!").command("ping").build();
+        GCFMessageContext commandContext = new GCFMessageContext(messageInstance, commandChannel, commandAuthor, message, dummyResponder);
 
         return commandContext;
     }

@@ -1,8 +1,8 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.github.philippheuer.gcf4j.api.domain.IMessageAuthor;
-import com.github.philippheuer.gcf4j.api.domain.IRole;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMember;
+import com.github.philippheuer.gcf4j.api.domain.IGCFRole;
 import lombok.*;
 
 import java.util.Set;
@@ -13,7 +13,7 @@ import java.util.Set;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Builder
-public class MessageAuthor implements IMessageAuthor {
+public class GCFMember implements IGCFMember {
 
     /**
      * {@inheritDoc}
@@ -54,7 +54,7 @@ public class MessageAuthor implements IMessageAuthor {
     /**
      * {@inheritDoc}
      */
-    private Set<IRole> roles;
+    private Set<IGCFRole> roles;
 
     /**
      * {@inheritDoc}

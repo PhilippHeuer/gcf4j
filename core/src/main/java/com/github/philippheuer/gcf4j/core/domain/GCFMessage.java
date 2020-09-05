@@ -1,8 +1,8 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
-import com.github.philippheuer.gcf4j.api.domain.IMessage;
-import com.github.philippheuer.gcf4j.api.domain.IMessageAttachment;
-import com.github.philippheuer.gcf4j.api.domain.IMessageEmbed;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageAttachment;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbed;
 import lombok.*;
 
 import java.time.Duration;
@@ -14,7 +14,7 @@ import java.util.List;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Builder
-public class Message implements IMessage {
+public class GCFMessage implements IGCFMessage {
 
     /**
      * {@inheritDoc}
@@ -30,12 +30,12 @@ public class Message implements IMessage {
      * {@inheritDoc}
      */
     @Singular
-    private List<IMessageAttachment> attachments;
+    private List<IGCFMessageAttachment> attachments;
 
     /**
      * {@inheritDoc}
      */
-    private IMessageEmbed messageEmbed;
+    private IGCFMessageEmbed messageEmbed;
 
     /**
      * {@inheritDoc}

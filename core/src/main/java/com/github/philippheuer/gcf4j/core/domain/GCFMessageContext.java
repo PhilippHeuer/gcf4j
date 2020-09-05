@@ -12,23 +12,23 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @Builder
-public class MessageContext implements IMessageContext {
+public class GCFMessageContext implements IGCFMessageContext {
 
 	// Instance
-	private IMessageInstance instance;
+	private IGCFInstance instance;
 
 	// Channel on the instance
-	private IMessageChannel channel;
+	private IGCFChannel channel;
 
 	// Author
-	private IMessageAuthor author;
+	private IGCFMember author;
 
 	// Message
-	private IMessage message;
+	private IGCFMessage message;
 
 	// Message Responder
 	@JsonIgnore
-	private IMessageResponder responder;
+	private IGCFMessageResponder responder;
 
 	/**
 	 * Command Context
@@ -38,7 +38,7 @@ public class MessageContext implements IMessageContext {
 	 * @param author
 	 * @param message
 	 */
-	public MessageContext(IMessageInstance instance, IMessageChannel channel, IMessageAuthor author, IMessage message, IMessageResponder responder) {
+	public GCFMessageContext(IGCFInstance instance, IGCFChannel channel, IGCFMember author, IGCFMessage message, IGCFMessageResponder responder) {
 		this.instance = instance;
 		this.channel = channel;
 		this.author = author;

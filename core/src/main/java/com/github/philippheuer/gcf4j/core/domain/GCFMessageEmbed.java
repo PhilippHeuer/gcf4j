@@ -1,7 +1,7 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
-import com.github.philippheuer.gcf4j.api.domain.IMessageEmbed;
-import com.github.philippheuer.gcf4j.api.domain.IMessageEmbedField;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbed;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbedField;
 import lombok.*;
 
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 @Builder
-public class MessageEmbed implements IMessageEmbed {
+public class GCFMessageEmbed implements IGCFMessageEmbed {
 
     /**
      * {@inheritDoc}
@@ -38,6 +38,6 @@ public class MessageEmbed implements IMessageEmbed {
      * {@inheritDoc}
      */
     @Singular
-    private List<IMessageEmbedField> fields;
+    private List<IGCFMessageEmbedField> fields;
 
 }

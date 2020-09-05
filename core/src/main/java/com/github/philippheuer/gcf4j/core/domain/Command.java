@@ -1,7 +1,7 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
 import com.github.philippheuer.gcf4j.api.IExecutionLimiter;
-import com.github.philippheuer.gcf4j.api.domain.IMessageContext;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 import lombok.*;
 
 import java.util.Map;
@@ -47,7 +47,7 @@ public class Command {
      * @return The function that is executed when the command is called.
      */
     @Getter
-    protected Consumer<IMessageContext> onExecution;
+    protected Consumer<IGCFMessageContext> onExecution;
 
     /**
      * Gets the limiters which determine if the command can be executed in a given context.

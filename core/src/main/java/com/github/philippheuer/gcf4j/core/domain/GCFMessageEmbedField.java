@@ -1,6 +1,6 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
-import com.github.philippheuer.gcf4j.api.domain.IMessageEmbedField;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbedField;
 import lombok.*;
 
 @Getter
@@ -8,7 +8,7 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @Builder
-public class MessageEmbedField implements IMessageEmbedField {
+public class GCFMessageEmbedField implements IGCFMessageEmbedField {
 
     /**
      * {@inheritDoc}

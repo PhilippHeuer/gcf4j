@@ -3,7 +3,7 @@ package com.github.philippheuer.gcf4j.api.domain;
 /**
  * A message attachment either contains the bytes or a url to download the attachment
  */
-public interface IMessageAttachment {
+public interface IGCFMessageAttachment {
 
     /**
      * Name of the attachment

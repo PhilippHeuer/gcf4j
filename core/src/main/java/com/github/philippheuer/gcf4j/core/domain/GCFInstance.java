@@ -1,13 +1,13 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
-import com.github.philippheuer.gcf4j.api.domain.IMessageInstance;
+import com.github.philippheuer.gcf4j.api.domain.IGCFInstance;
 import lombok.*;
 
 @Getter
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-public class MessageInstance implements IMessageInstance {
+public class GCFInstance implements IGCFInstance {
 
     // Type
     private String type;
@@ -15,14 +15,14 @@ public class MessageInstance implements IMessageInstance {
     // Unique Id
     private String id;
 
-    // Key
-    private String key;
-
     @Builder
-    public MessageInstance(String type, String id) {
+    public GCFInstance(String type, String id) {
         this.type = type;
         this.id = id;
-        this.key = type + "-" + id;
+    }
+
+    public String getKey() {
+        return type + "-" + id;
     }
 
 }

@@ -1,6 +1,6 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
-import com.github.philippheuer.gcf4j.api.domain.IMessageChannel;
+import com.github.philippheuer.gcf4j.api.domain.IGCFChannel;
 import lombok.*;
 
 @Getter
@@ -9,7 +9,7 @@ import lombok.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Builder
-public class MessageChannel implements IMessageChannel {
+public class GCFChannel implements IGCFChannel {
 
     // Unique ChannelId
     private String id;

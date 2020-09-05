@@ -1,6 +1,6 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
-import com.github.philippheuer.gcf4j.api.domain.IRole;
+import com.github.philippheuer.gcf4j.api.domain.IGCFRole;
 import lombok.*;
 
 @Getter
@@ -8,7 +8,7 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @Builder
-public class Role implements IRole {
+public class GCFRole implements IGCFRole {
 
     /**
      * {@inheritDoc}

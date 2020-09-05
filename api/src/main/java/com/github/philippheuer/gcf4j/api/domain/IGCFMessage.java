@@ -3,7 +3,7 @@ package com.github.philippheuer.gcf4j.api.domain;
 import java.time.Duration;
 import java.util.List;
 
-public interface IMessage {
+public interface IGCFMessage {
 
     /**
      * the unique id of the message
@@ -18,12 +18,12 @@ public interface IMessage {
     /**
      * a list of all attachments that are part of the message
      */
-    List<IMessageAttachment> getAttachments();
+    List<IGCFMessageAttachment> getAttachments();
 
     /**
      * gets the embed message info
      */
-    IMessageEmbed getMessageEmbed();
+    IGCFMessageEmbed getMessageEmbed();
 
     /**
      * returns the command in case a command was fired

@@ -3,7 +3,7 @@ package com.github.philippheuer.gcf4j.api.domain;
 /**
  * Implements method to respond to a command
  */
-public interface IMessageResponder {
+public interface IGCFMessageResponder {
 
     /**
      * Sends a direct response related to the IMessageContext
@@ -11,6 +11,6 @@ public interface IMessageResponder {
      * @param messageContext the current message context, will be used to respond on the same instance + channel
      * @param message the message that should be send in response
      */
-    void sendMessage(IMessageContext messageContext, IMessage message);
+    void sendMessage(IGCFMessageContext messageContext, IGCFMessage message);
 
 }

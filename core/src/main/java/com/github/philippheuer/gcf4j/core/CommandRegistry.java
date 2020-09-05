@@ -2,7 +2,7 @@ package com.github.philippheuer.gcf4j.core;
 
 import com.github.philippheuer.gcf4j.api.ICommandRegistry;
 import com.github.philippheuer.gcf4j.api.IExecutionLimiter;
-import com.github.philippheuer.gcf4j.api.domain.IMessageContext;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 import com.github.philippheuer.gcf4j.core.domain.Command;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,7 +36,7 @@ public class CommandRegistry implements ICommandRegistry {
     /**
      * {@inheritDoc }
      */
-    public void call(IMessageContext ctx) {
+    public void call(IGCFMessageContext ctx) {
         if (ctx.getMessage().getCommand() != null) {
             var cmd = getCommand(ctx.getMessage().getCommand());
             if (cmd.isPresent()) {
@@ -47,7 +47,7 @@ public class CommandRegistry implements ICommandRegistry {
         }
     }
 
-    private void call(Command cmd, IMessageContext ctx) {
+    private void call(Command cmd, IGCFMessageContext ctx) {
         if (defaultLimiters != null) {
             for (IExecutionLimiter limiter : defaultLimiters) {
                 if (!limiter.check(ctx)) {
