@@ -43,4 +43,10 @@ public interface IGCFMessage {
      */
     Duration getSelfDestruct();
 
+    /**
+     * returns if handling of this message should be traced
+     * @return
+     */
+    boolean isTraceEnabled();
+
 }

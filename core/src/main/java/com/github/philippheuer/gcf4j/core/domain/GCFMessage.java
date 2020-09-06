@@ -52,4 +52,9 @@ public class GCFMessage implements IGCFMessage {
      */
     private Duration selfDestruct;
 
+    /**
+     * {@inheritDoc}
+     */
+    private boolean traceEnabled = false;
+
 }
