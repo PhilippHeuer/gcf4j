@@ -29,6 +29,11 @@ public class GCFMessage implements IGCFMessage {
     /**
      * {@inheritDoc}
      */
+    private String threadId;
+
+    /**
+     * {@inheritDoc}
+     */
     @Singular
     private List<IGCFMessageAttachment> attachments;
 
@@ -55,6 +60,7 @@ public class GCFMessage implements IGCFMessage {
     /**
      * {@inheritDoc}
      */
+    @Setter
     private boolean traceEnabled = false;
 
 }

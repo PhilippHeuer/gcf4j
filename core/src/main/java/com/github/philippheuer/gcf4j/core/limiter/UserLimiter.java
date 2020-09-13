@@ -20,7 +20,7 @@ public class UserLimiter implements IExecutionLimiter {
      */
     @Override
     public boolean check(IGCFMessageContext ctx) {
-        return ArrayUtils.contains(userIds, null);
+        return ArrayUtils.contains(userIds, ctx.getAuthor().getId());
     }
 
 }

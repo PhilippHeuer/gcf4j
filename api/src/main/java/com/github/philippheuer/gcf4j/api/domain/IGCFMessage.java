@@ -16,6 +16,11 @@ public interface IGCFMessage {
     String getText();
 
     /**
+     * {@inheritDoc}
+     */
+    String getThreadId();
+
+    /**
      * a list of all attachments that are part of the message
      */
     List<IGCFMessageAttachment> getAttachments();
@@ -48,5 +53,11 @@ public interface IGCFMessage {
      * @return
      */
     boolean isTraceEnabled();
+
+    /**
+     * enables / disables tracing for this message
+     * @param on true or false
+     */
+    void setTraceEnabled(boolean on);
 
 }

@@ -26,7 +26,7 @@ public class CommandRegistryTest {
                 .aliases(Set.of("p"))
                 .onExecution(ctx -> {
                     // command code
-                    ctx.getResponder().sendMessage(ctx, GCFMessage.builder().text("Hello World!").build());
+                    ctx.getConnector().sendMessage(ctx, GCFMessage.builder().text("Hello World!").build());
                 })
                 .build();
         commandRegistry.register(ping);

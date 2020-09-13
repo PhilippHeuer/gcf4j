@@ -1,5 +1,7 @@
 package com.github.philippheuer.gcf4j.api.domain;
 
+import com.github.philippheuer.gcf4j.api.IMessageConnector;
+
 public interface IGCFMessageContext {
 
     IGCFInstance getInstance();
@@ -10,5 +12,5 @@ public interface IGCFMessageContext {
 
     IGCFMessage getMessage();
 
-    IGCFMessageResponder getResponder();
+    IMessageConnector getConnector();
 }

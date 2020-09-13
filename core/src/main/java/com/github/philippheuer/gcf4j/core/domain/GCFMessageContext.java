@@ -1,6 +1,7 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.philippheuer.gcf4j.api.IMessageConnector;
 import com.github.philippheuer.gcf4j.api.domain.*;
 import lombok.*;
 
@@ -28,7 +29,7 @@ public class GCFMessageContext implements IGCFMessageContext {
 
 	// Message Responder
 	@JsonIgnore
-	private IGCFMessageResponder responder;
+	private IMessageConnector connector;
 
 	/**
 	 * Command Context
@@ -38,12 +39,12 @@ public class GCFMessageContext implements IGCFMessageContext {
 	 * @param author
 	 * @param message
 	 */
-	public GCFMessageContext(IGCFInstance instance, IGCFChannel channel, IGCFMember author, IGCFMessage message, IGCFMessageResponder responder) {
+	public GCFMessageContext(IGCFInstance instance, IGCFChannel channel, IGCFMember author, IGCFMessage message, IMessageConnector connector) {
 		this.instance = instance;
 		this.channel = channel;
 		this.author = author;
 		this.message = message;
-		this.responder = responder;
+		this.connector = connector;
 	}
 
 }
