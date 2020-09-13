@@ -2,6 +2,9 @@ package com.github.philippheuer.gcf4j.api;
 
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageType;
+
+import java.util.Set;
 
 /**
  * Implements method to respond to a command
@@ -24,5 +27,14 @@ public interface IMessageConnector {
      */
     void deleteMessage(IGCFMessageContext messageContext, IGCFMessage message);
 
+    /**
+     * @return a set of all supported message types
+     */
+    Set<IGCFMessageType> getSupportedMessageTypes();
+
+    /**
+     * @return the default message type
+     */
+    IGCFMessageType getDefaultMessageType();
 }
 
