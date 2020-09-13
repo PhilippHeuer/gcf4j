@@ -40,7 +40,7 @@ public class MessageHandlerRegistryTest {
         GCFChannel commandChannel = new GCFChannel("general", "General");
         GCFMember commandAuthor = GCFMember.builder().id("1").name("TestUser").bot(true).roles(Set.of(GCFRole.builder().name("admin").build())).build();
         GCFMessage message = GCFMessage.builder().text("Hello World!").build();
-        GCFMessageContext commandContext = new GCFMessageContext(messageInstance, commandChannel, commandAuthor, message, dummyResponder);
+        GCFMessageContext commandContext = new GCFMessageContext(messageInstance, commandChannel, commandAuthor, message, null, dummyResponder);
 
         return commandContext;
     }

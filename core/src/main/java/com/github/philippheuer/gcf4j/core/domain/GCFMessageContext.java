@@ -27,6 +27,9 @@ public class GCFMessageContext implements IGCFMessageContext {
 	// Message
 	private IGCFMessage message;
 
+	// Author
+	private IGCFMember botMember;
+
 	// Message Responder
 	@JsonIgnore
 	private IMessageConnector connector;
@@ -34,16 +37,19 @@ public class GCFMessageContext implements IGCFMessageContext {
 	/**
 	 * Command Context
 	 *
-	 * @param instance
-	 * @param channel
-	 * @param author
-	 * @param message
+	 * @param instance Instance
+	 * @param channel Channel
+	 * @param author Author
+	 * @param message Message
+	 * @param botMember Bot Member Info
+	 * @param connector Message Connector
 	 */
-	public GCFMessageContext(IGCFInstance instance, IGCFChannel channel, IGCFMember author, IGCFMessage message, IMessageConnector connector) {
+	public GCFMessageContext(IGCFInstance instance, IGCFChannel channel, IGCFMember author, IGCFMessage message, IGCFMember botMember, IMessageConnector connector) {
 		this.instance = instance;
 		this.channel = channel;
 		this.author = author;
 		this.message = message;
+		this.botMember = botMember;
 		this.connector = connector;
 	}
 
