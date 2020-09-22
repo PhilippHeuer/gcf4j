@@ -1,5 +1,6 @@
 package com.github.philippheuer.gcf4j.core.domain;
 
+import com.github.philippheuer.gcf4j.api.domain.IGCFAttachmentType;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageAttachment;
 import lombok.*;
 import okhttp3.OkHttpClient;
@@ -15,6 +16,12 @@ import java.io.InputStream;
 public class GCFMessageAttachment implements IGCFMessageAttachment {
 
     private static OkHttpClient httpClient = new OkHttpClient();
+
+    /**
+     * {@inheritDoc}
+     */
+    @Getter
+    private IGCFAttachmentType type;
 
     /**
      * {@inheritDoc}
