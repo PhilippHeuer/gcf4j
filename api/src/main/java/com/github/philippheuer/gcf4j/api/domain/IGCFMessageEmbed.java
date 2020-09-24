@@ -1,6 +1,7 @@
 package com.github.philippheuer.gcf4j.api.domain;
 
 import java.awt.*;
+import java.time.temporal.TemporalAccessor;
 import java.util.List;
 
 public interface IGCFMessageEmbed {
@@ -14,5 +15,7 @@ public interface IGCFMessageEmbed {
     Color getColor();
 
     List<IGCFMessageEmbedField> getFields();
+
+    TemporalAccessor getTimestamp();
 
 }

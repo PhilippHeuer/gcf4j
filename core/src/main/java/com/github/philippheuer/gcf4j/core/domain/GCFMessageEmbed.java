@@ -5,6 +5,7 @@ import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbedField;
 import lombok.*;
 
 import java.awt.*;
+import java.time.temporal.TemporalAccessor;
 import java.util.List;
 
 @Getter
@@ -39,5 +40,10 @@ public class GCFMessageEmbed implements IGCFMessageEmbed {
      */
     @Singular
     private List<IGCFMessageEmbedField> fields;
+
+    /**
+     * {@inheritDoc}
+     */
+    private TemporalAccessor timestamp;
 
 }
