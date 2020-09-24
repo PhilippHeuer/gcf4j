@@ -1,8 +1,6 @@
 package com.github.philippheuer.gcf4j.api;
 
-import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
-import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
-import com.github.philippheuer.gcf4j.api.domain.IGCFMessageType;
+import com.github.philippheuer.gcf4j.api.domain.*;
 
 import java.util.Set;
 
@@ -18,6 +16,15 @@ public interface IMessageConnector {
      * @param message the message that should be send in response
      */
     void sendMessage(IGCFMessageContext messageContext, IGCFMessage message);
+
+    /**
+     * Sends a direct response related to the IMessageContext
+     *
+     * @param instance instance
+     * @param recipient the target member
+     * @param message the message that should be deleted, a message id has to be set
+     */
+    void sendPrivateMessage(IGCFInstance instance, IGCFMember recipient, IGCFMessage message);
 
     /**
      * Sends a direct response related to the IMessageContext
