@@ -2,6 +2,7 @@ package com.github.philippheuer.gcf4j.api;
 
 import com.github.philippheuer.gcf4j.api.domain.*;
 
+import java.time.Duration;
 import java.util.Set;
 
 /**
@@ -33,6 +34,32 @@ public interface IMessageConnector {
      * @param message the message that should be deleted, a message id has to be set
      */
     void deleteMessage(IGCFMessageContext messageContext, IGCFMessage message);
+
+    /**
+     * Mute the specified member on the instance
+     *
+     * @param instance the instance
+     * @param member the member
+     */
+    void muteMember(IGCFInstance instance, IGCFMember member);
+
+    /**
+     * Unmute the specified member on the instance
+     *
+     * @param instance the instance
+     * @param member the member
+     */
+    void unmuteMember(IGCFInstance instance, IGCFMember member);
+
+    /**
+     * Ban the target user
+     *
+     * @param instance the instance
+     * @param member the member
+     * @param duration ban duration
+     * @param reason ban reason
+     */
+    void banMember(IGCFInstance instance, IGCFMember member, Duration duration, String reason);
 
     /**
      * @return a set of all supported message types
