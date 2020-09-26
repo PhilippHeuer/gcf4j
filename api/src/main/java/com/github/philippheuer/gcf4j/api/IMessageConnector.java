@@ -11,6 +11,13 @@ import java.util.Set;
 public interface IMessageConnector {
 
     /**
+     * Gets the unique type identifier of this connector
+     *
+     * @return unique type identifier (discord, ...)
+     */
+    String getType();
+
+    /**
      * Sends a direct response related to the IMessageContext
      *
      * @param messageContext the current message context, will be used to respond on the same instance + channel
