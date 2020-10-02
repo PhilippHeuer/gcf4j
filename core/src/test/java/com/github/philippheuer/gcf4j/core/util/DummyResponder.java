@@ -4,10 +4,16 @@ import com.github.philippheuer.gcf4j.api.IMessageConnector;
 import com.github.philippheuer.gcf4j.api.domain.*;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.Duration;
 import java.util.Set;
 
 @Slf4j
 public class DummyResponder implements IMessageConnector {
+
+    @Override
+    public String getType() {
+        return null;
+    }
 
     @Override
     public void sendMessage(IGCFMessageContext messageContext, IGCFMessage message) {
@@ -21,6 +27,21 @@ public class DummyResponder implements IMessageConnector {
 
     @Override
     public void deleteMessage(IGCFMessageContext messageContext, IGCFMessage message) {
+
+    }
+
+    @Override
+    public void muteMember(IGCFInstance instance, IGCFMember member) {
+
+    }
+
+    @Override
+    public void unmuteMember(IGCFInstance instance, IGCFMember member) {
+
+    }
+
+    @Override
+    public void banMember(IGCFInstance instance, IGCFMember member, Duration duration, String reason) {
 
     }
 
