@@ -12,6 +12,8 @@ public interface IGCFMessageEmbed {
 
     String getUrl();
 
+    String getFooter();
+
     Color getColor();
 
     List<IGCFMessageEmbedField> getFields();

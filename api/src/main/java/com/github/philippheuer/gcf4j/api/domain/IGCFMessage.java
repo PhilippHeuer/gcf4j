@@ -49,15 +49,9 @@ public interface IGCFMessage {
     Duration getSelfDestruct();
 
     /**
-     * returns if handling of this message should be traced
+     * returns the reactions of the message
      * @return
      */
-    boolean isTraceEnabled();
-
-    /**
-     * enables / disables tracing for this message
-     * @param on true or false
-     */
-    void setTraceEnabled(boolean on);
+    List<IGCFReaction> getReactions();
 
 }

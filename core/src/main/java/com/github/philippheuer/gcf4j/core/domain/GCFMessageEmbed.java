@@ -38,6 +38,11 @@ public class GCFMessageEmbed implements IGCFMessageEmbed {
     /**
      * {@inheritDoc}
      */
+    private String footer;
+
+    /**
+     * {@inheritDoc}
+     */
     @Singular
     private List<IGCFMessageEmbedField> fields;
 

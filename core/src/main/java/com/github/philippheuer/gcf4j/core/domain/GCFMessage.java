@@ -3,6 +3,7 @@ package com.github.philippheuer.gcf4j.core.domain;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageAttachment;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbed;
+import com.github.philippheuer.gcf4j.api.domain.IGCFReaction;
 import lombok.*;
 
 import java.time.Duration;
@@ -55,12 +56,11 @@ public class GCFMessage implements IGCFMessage {
     /**
      * {@inheritDoc}
      */
-    private Duration selfDestruct;
+    List<IGCFReaction> reactions;
 
     /**
      * {@inheritDoc}
      */
-    @Setter
-    private boolean traceEnabled = false;
+    private Duration selfDestruct;
 
 }
