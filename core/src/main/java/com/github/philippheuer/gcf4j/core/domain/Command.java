@@ -2,7 +2,6 @@ package com.github.philippheuer.gcf4j.core.domain;
 
 import com.github.philippheuer.gcf4j.api.IExecutionLimiter;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
-import com.github.philippheuer.gcf4j.api.domain.IGCFMessageType;
 import lombok.*;
 
 import java.util.Map;
@@ -58,24 +57,5 @@ public class Command {
     @Getter
     @Singular
     protected Set<IExecutionLimiter> commandLimiters;
-
-    /**
-     * Gets the function that is executed when the command is called.
-     *
-     * @return The function that is executed when the command is called.
-     */
-    public IGCFMessageType getEffectiveMessageType(IGCFMessageContext ctx, String configuredType) {
-        if ("embed".equalsIgnoreCase(configuredType) && ctx.getConnector().getSupportedMessageTypes().contains(IGCFMessageType.EMBED)) {
-            return IGCFMessageType.EMBED;
-        } else if ("embed".equalsIgnoreCase(configuredType) && !ctx.getConnector().getSupportedMessageTypes().contains(IGCFMessageType.EMBED)) {
-            return ctx.getConnector().getDefaultMessageType();
-        } else if ("text".equalsIgnoreCase(configuredType) && ctx.getConnector().getSupportedMessageTypes().contains(IGCFMessageType.TEXT)) {
-            return IGCFMessageType.TEXT;
-        } else if ("text".equalsIgnoreCase(configuredType) && !ctx.getConnector().getSupportedMessageTypes().contains(IGCFMessageType.TEXT)) {
-            return ctx.getConnector().getDefaultMessageType();
-        }
-
-        return ctx.getConnector().getDefaultMessageType();
-    }
 
 }

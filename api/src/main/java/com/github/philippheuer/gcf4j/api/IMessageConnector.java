@@ -26,6 +26,14 @@ public interface IMessageConnector {
     void sendMessage(IGCFMessageContext messageContext, IGCFMessage message);
 
     /**
+     * Edits a message
+     *
+     * @param messageContext the current message context, will be used to respond on the same instance + channel
+     * @param message the message that should be edited, needs to contain the id
+     */
+    void editMessage(IGCFMessageContext messageContext, IGCFMessage message);
+
+    /**
      * Sends a direct response related to the IMessageContext
      *
      * @param instance instance
@@ -68,14 +76,5 @@ public interface IMessageConnector {
      */
     void banMember(IGCFInstance instance, IGCFMember member, Duration duration, String reason);
 
-    /**
-     * @return a set of all supported message types
-     */
-    Set<IGCFMessageType> getSupportedMessageTypes();
-
-    /**
-     * @return the default message type
-     */
-    IGCFMessageType getDefaultMessageType();
 }
 

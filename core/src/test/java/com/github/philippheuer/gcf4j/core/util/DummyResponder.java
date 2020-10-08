@@ -21,6 +21,11 @@ public class DummyResponder implements IMessageConnector {
     }
 
     @Override
+    public void editMessage(IGCFMessageContext messageContext, IGCFMessage message) {
+
+    }
+
+    @Override
     public void sendPrivateMessage(IGCFInstance instance, IGCFMember recipient, IGCFMessage message) {
 
     }
@@ -43,16 +48,6 @@ public class DummyResponder implements IMessageConnector {
     @Override
     public void banMember(IGCFInstance instance, IGCFMember member, Duration duration, String reason) {
 
-    }
-
-    @Override
-    public Set<IGCFMessageType> getSupportedMessageTypes() {
-        return null;
-    }
-
-    @Override
-    public IGCFMessageType getDefaultMessageType() {
-        return null;
     }
 
 }
