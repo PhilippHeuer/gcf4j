@@ -31,14 +31,26 @@ public interface IGCFMessage {
     IGCFMessageEmbed getMessageEmbed();
 
     /**
-     * returns the command in case a command was fired
-     * @return
+     * sets a new value as command (used when parsing the message)
+     *
+     * @param command command
+     */
+    void setCommand(String command);
+
+    /**
+     * @return the command in case a command was fired
      */
     String getCommand();
 
     /**
-     * returns the payload after the command for futher processing
-     * @return
+     * sets the parameters for the command
+     *
+     * @param commandPayload command payload
+     */
+    void setCommandPayload(String commandPayload);
+
+    /**
+     * @return the payload after the command for further processing
      */
     String getCommandPayload();
 

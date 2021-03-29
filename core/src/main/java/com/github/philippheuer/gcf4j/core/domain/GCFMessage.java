@@ -46,11 +46,13 @@ public class GCFMessage implements IGCFMessage {
     /**
      * {@inheritDoc}
      */
+    @Setter
     private String command;
 
     /**
      * {@inheritDoc}
      */
+    @Setter
     private String commandPayload;
 
     /**

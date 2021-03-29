@@ -1,15 +1,23 @@
 dependencies {
     // Project Modules
-    compile project(':' + rootProject.name + '-api')
+    api project(':' + rootProject.name + '-api')
 
-    // Commons Lang3
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
+    // Commons
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
 
     // HttpClient
-    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.7.2'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.9.1'
 
     // Jackson
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.11.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.12.2'
+
+    // OpenTracing
+    api group: 'io.opentracing', name: 'opentracing-mock', version: '0.33.0'
+
+    // Arguments
+    implementation group: 'args4j', name: 'args4j', version: '2.33'
+    implementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
 }
 
 // Artifact Info
