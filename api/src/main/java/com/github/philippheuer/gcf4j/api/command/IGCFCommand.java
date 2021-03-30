@@ -2,6 +2,7 @@ package com.github.philippheuer.gcf4j.api.command;
 
 import com.github.philippheuer.gcf4j.api.IExecutionLimiter;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbed;
 
 import java.awt.*;
 import java.util.List;
@@ -87,25 +88,40 @@ public interface IGCFCommand {
     void addUsageExample(IGCFUsageExample... examples);
 
     /**
-     * send Plain Response
+     * responds with a message
      *
      * @param ctx IGCFMessageContext
+     * @param messageEmbed IGCFMessageEmbed
+     * @return IGCFMessageContext of the response
      */
-    void respondWithPlainTextMessage(IGCFMessageContext ctx, String content);
+    IGCFMessageContext respondWithMessage(IGCFMessageContext ctx, IGCFMessageEmbed messageEmbed);
 
     /**
-     * send Embed Response
+     * responds with a simple message
      *
      * @param ctx IGCFMessageContext
+     * @param title title
+     * @param content content
+     * @param color color
+     * @return IGCFMessageContext
      */
-    void respondWithTextMessage(IGCFMessageContext ctx, String title, String content, Color color);
+    IGCFMessageContext respondWithSimpleMessage(IGCFMessageContext ctx, String title, String content, Color color);
 
     /**
-     * command: unknown
+     * unknown command
      *
-     * @param cmdName Command Name
      * @param ctx IGCFMessageContext
+     * @param cmdName command name
+     * @return IGCFMessageContext of the response
      */
-    void respondWithUnknownCommand(String cmdName, IGCFMessageContext ctx);
+    IGCFMessageContext respondWithUnknownCommand(IGCFMessageContext ctx, String cmdName);
+
+    /**
+     * syntax error
+     *
+     * @param ctx IGCFMessageContext
+     * @return IGCFMessageContext of the response
+     */
+    IGCFMessageContext respondWithSyntaxErrorHelp(IGCFMessageContext ctx, IGCFCommand command);
 
 }

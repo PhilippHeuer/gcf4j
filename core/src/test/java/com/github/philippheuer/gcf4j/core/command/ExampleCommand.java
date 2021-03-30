@@ -1,6 +1,7 @@
 package com.github.philippheuer.gcf4j.core.command;
 
 import com.github.philippheuer.gcf4j.api.command.GCFCommandOptionType;
+import com.github.philippheuer.gcf4j.api.command.IGCFCommandContext;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommandOption;
 import com.github.philippheuer.gcf4j.api.command.IGCFUsageExample;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
@@ -31,8 +32,7 @@ public class ExampleCommand extends GCFCommand {
         setVisibleToEveryone(true);
     }
 
-    public IGCFMessageContext onExecution(IGCFMessageContext ctx) {
+    public IGCFMessageContext onExecution(IGCFCommandContext ctx) {
         return GCFMessageContext.replaceMessage(ctx, GCFMessage.builder().text("helloworld").build());
     }
-
 }

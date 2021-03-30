@@ -6,8 +6,11 @@ import com.github.philippheuer.gcf4j.api.command.IGCFCommandContext;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommandOption;
 import com.github.philippheuer.gcf4j.api.command.IGCFUsageExample;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbed;
 import com.github.philippheuer.gcf4j.core.domain.GCFMessage;
+import com.github.philippheuer.gcf4j.core.domain.GCFMessageContext;
 import com.github.philippheuer.gcf4j.core.domain.GCFMessageEmbed;
+import com.github.philippheuer.gcf4j.core.domain.GCFMessageEmbedField;
 import com.github.philippheuer.gcf4j.core.util.OptionUtils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -120,24 +123,48 @@ public abstract class GCFCommand implements IGCFCommand {
     @Override
     public abstract IGCFMessageContext onExecution(IGCFCommandContext ctx);
 
-    public void respondWithPlainTextMessage(IGCFMessageContext ctx, String content) {
-        ctx.getConnector().sendMessage(ctx, GCFMessage.builder().text(content).build());
+    public IGCFMessageContext respondWithMessage(IGCFMessageContext ctx, IGCFMessageEmbed messageEmbed) {
+        return GCFMessageContext.replaceMessage(ctx, GCFMessage.builder()
+                .text(messageEmbed.getTitle())
+                .messageEmbed(messageEmbed)
+                .build()
+        );
     }
 
-    public void respondWithTextMessage(IGCFMessageContext ctx, String title, String content, Color color) {
-        ctx.getConnector().sendMessage(ctx, GCFMessage.builder().text(content).messageEmbed(GCFMessageEmbed.builder()
-                .color(color)
+    public IGCFMessageContext respondWithSimpleMessage(IGCFMessageContext ctx, String title, String content, Color color) {
+        var messageEmbed = GCFMessageEmbed.builder()
                 .title(title)
-                .description(content).build()
-        ).build());
+                .description(content)
+                .color(color)
+                .build();
+
+        return respondWithMessage(ctx, messageEmbed);
     }
 
-    public void respondWithUnknownCommand(String cmdName, IGCFMessageContext ctx) {
+    public IGCFMessageContext respondWithUnknownCommand(IGCFMessageContext ctx, String cmdName) {
         var permErrorMsg = GCFMessageEmbed.builder()
                 .color(Color.RED)
                 .title("Unknown Command: " + cmdName)
                 .description(cmdName + " is not a valid command")
                 .build();
-        ctx.getConnector().sendMessage(ctx, GCFMessage.builder().messageEmbed(permErrorMsg).build());
+
+        return respondWithMessage(ctx, permErrorMsg);
+    }
+
+    public IGCFMessageContext respondWithSyntaxErrorHelp(IGCFMessageContext ctx, IGCFCommand command) {
+        GCFMessageEmbed.GCFMessageEmbedBuilder embed = GCFMessageEmbed.builder()
+                .color(Color.RED)
+                .title("Syntax Error [" + command.getName() + "]")
+                .description(ctx.getMessage().getText() != null ? ctx.getMessage().getText() : "");
+
+        StringBuffer examplesStringBuffer = new StringBuffer();
+        if (command.getUsageExamples() != null && command.getUsageExamples().size() > 0) {
+            command.getUsageExamples().forEach(example -> {
+                examplesStringBuffer.append(String.format("%s %s (%s)\n", command.getName(), example.getCommand(), example.getDescription()));
+            });
+        }
+        embed = embed.field(GCFMessageEmbedField.builder().key("Examples").value(examplesStringBuffer.toString()).inline(false).build());
+
+        return respondWithMessage(ctx, embed.build());
     }
 }
