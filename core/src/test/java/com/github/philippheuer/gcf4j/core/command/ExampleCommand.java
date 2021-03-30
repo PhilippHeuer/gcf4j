@@ -3,7 +3,9 @@ package com.github.philippheuer.gcf4j.core.command;
 import com.github.philippheuer.gcf4j.api.command.GCFCommandOptionType;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommandOption;
 import com.github.philippheuer.gcf4j.api.command.IGCFUsageExample;
-import com.github.philippheuer.gcf4j.core.domain.GCFCommand;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
+import com.github.philippheuer.gcf4j.core.domain.GCFMessage;
+import com.github.philippheuer.gcf4j.core.domain.GCFMessageContext;
 
 import java.util.List;
 import java.util.Set;
@@ -26,6 +28,10 @@ public class ExampleCommand extends GCFCommand {
 
     public ExampleCommand() {
         super("example", Set.of("exx"), "test", "a simple example command", List.of(OPTION_SILENT), List.of(EXAMPLE_SILENT));
+    }
+
+    public IGCFMessageContext onExecution(IGCFMessageContext ctx) {
+        return GCFMessageContext.replaceMessage(ctx, GCFMessage.builder().text("helloworld").build());
     }
 
 }

@@ -1,9 +1,11 @@
 package com.github.philippheuer.gcf4j.api;
 
-import com.github.philippheuer.gcf4j.api.domain.*;
+import com.github.philippheuer.gcf4j.api.domain.IGCFInstance;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMember;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 
 import java.time.Duration;
-import java.util.Set;
 
 /**
  * Implements method to respond to a command

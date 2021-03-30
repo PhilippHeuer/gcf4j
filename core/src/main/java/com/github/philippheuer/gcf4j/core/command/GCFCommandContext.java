@@ -1,20 +1,20 @@
 package com.github.philippheuer.gcf4j.core.command;
 
 import com.github.philippheuer.gcf4j.api.IMessageConnector;
+import com.github.philippheuer.gcf4j.api.command.IGCFCommandContext;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommandOption;
 import com.github.philippheuer.gcf4j.api.domain.IGCFChannel;
 import com.github.philippheuer.gcf4j.api.domain.IGCFInstance;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMember;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
-import com.github.philippheuer.gcf4j.core.domain.GCFCommand;
 import com.github.philippheuer.gcf4j.core.util.LimiterUtils;
 import io.opentracing.Span;
 import org.apache.commons.cli.CommandLine;
 
 import java.util.List;
 
-public class GCFCommandContext implements IGCFMessageContext {
+public class GCFCommandContext implements IGCFCommandContext {
 
     // holds the current context
     private IGCFMessageContext ctx;

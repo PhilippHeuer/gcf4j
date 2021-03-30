@@ -2,14 +2,10 @@ package com.github.philippheuer.gcf4j.api.command;
 
 import com.github.philippheuer.gcf4j.api.IExecutionLimiter;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
-import lombok.Getter;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.function.Consumer;
 
 public interface IGCFCommand {
 
@@ -49,49 +45,56 @@ public interface IGCFCommand {
     Boolean isVisibleToEveryone();
 
     /**
-     * This will call the command specific onExecution after some preprocessing
+     * this will call the command specific onExecution after some preprocessing
      *
      * @param ctx IGCFMessageContext
      */
-    void onSuperExecution(IGCFMessageContext ctx);
+    IGCFMessageContext onSuperExecution(IGCFMessageContext ctx);
 
     /**
-     * Gets the function that is executed when the command is called.
+     * gets the function that is executed when the command is called.
      *
      * @return The function that is executed when the command is called.
      */
-    Consumer<IGCFMessageContext> getOnExecution();
+    IGCFMessageContext onExecution(IGCFCommandContext ctx);
 
     /**
-     * Gets the limiters which determine if the command can be executed in a given context.
+     * gets the limiters which determine if the command can be executed in a given context.
      *
      * @return The limiters which determine if the command can be executed in a given context.
      */
     Set<IExecutionLimiter> getCommandLimiters();
 
     /**
-     * Registers one or multiple command options
+     * registers one or multiple command options
      *
      * @param options Option...
      */
     void registerCommandOption(IGCFCommandOption... options);
 
     /**
-     * Send Plain Response
+     * adds new usage examples
+     *
+     * @param examples usage examples
+     */
+    void addUsageExample(IGCFUsageExample... examples);
+
+    /**
+     * send Plain Response
      *
      * @param ctx IGCFMessageContext
      */
     void respondWithPlainTextMessage(IGCFMessageContext ctx, String content);
 
     /**
-     * Send Embed Response
+     * send Embed Response
      *
      * @param ctx IGCFMessageContext
      */
     void respondWithTextMessage(IGCFMessageContext ctx, String title, String content, Color color);
 
     /**
-     * Command: Unknown
+     * command: unknown
      *
      * @param cmdName Command Name
      * @param ctx IGCFMessageContext

@@ -1,6 +1,7 @@
 package com.github.philippheuer.gcf4j.core.command;
 
 import com.github.philippheuer.gcf4j.api.IExecutionLimiter;
+import com.github.philippheuer.gcf4j.api.command.ICommandManager;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommand;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 import io.opentracing.Span;
@@ -24,7 +25,7 @@ import java.util.Set;
  * A registry for all registered commands
  */
 @Slf4j
-public class CommandManager {
+public class CommandManager implements ICommandManager {
 
     private Tracer tracer;
 
@@ -195,14 +196,15 @@ public class CommandManager {
      *
      * @param ctx the message context, parseMessage needs to be called on the ctx before calling this
      */
-    public void runCommand(IGCFMessageContext ctx) {
+    public IGCFMessageContext runCommand(IGCFMessageContext ctx) {
         Span span = tracer.buildSpan("message.command.handle").asChildOf(ctx.getSpan()).start();
+        IGCFMessageContext response = null;
 
         // ignore bot messages
         if (ctx.getAuthor().isBot()) {
             span.log(Map.of("event", "skip.author.bot"));
             span.finish();
-            return;
+            return null;
         }
 
         // get text
@@ -210,27 +212,27 @@ public class CommandManager {
         if (StringUtils.isEmpty(text)) {
             span.log(Map.of("event", "skip.text.empty"));
             span.finish();
-            return;
+            return null;
         }
 
         try {
             if (isCommand(ctx)) {
                 if (hasPermissions(ctx)) {
                     var cmd = getCommand(ctx.getMessage().getCommand()).get();
-
-                    if (cmd.getOnExecution() != null) {
-                        cmd.getOnExecution().accept(ctx);
-                    } else {
-                        log.warn("no execution method defined for command {}!", ctx.getMessage().getCommand());
-                    }
+                    response = cmd.onSuperExecution(ctx);
                 } else {
                     log.debug("rejected command execution based on command limiters!");
                 }
             } else {
                 log.debug("no command named {} has been registered!", ctx.getMessage().getCommand());
             }
+        } catch (Exception ex) {
+            // can happen if the command can't be found, but shouldn't happen
+            log.debug("unexpected error, aborting command execution! {}", ex.getMessage());
         } finally {
             span.finish();
         }
+
+        return response;
     }
 }

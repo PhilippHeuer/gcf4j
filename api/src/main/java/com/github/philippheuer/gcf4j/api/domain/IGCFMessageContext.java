@@ -18,4 +18,5 @@ public interface IGCFMessageContext {
     IGCFMember getBotMember();
 
     IMessageConnector getConnector();
+
 }

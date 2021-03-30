@@ -3,7 +3,7 @@ dependencies {
     api project(':' + rootProject.name + '-core')
 
     // SpringBoot
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.3.1.RELEASE'
+    api group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.4.4'
 }
 
 // Artifact Info

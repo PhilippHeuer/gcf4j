@@ -52,16 +52,13 @@ subprojects {
 
     // Dependencies
     dependencies {
-        // POM
-        implementation platform("io.projectreactor:reactor-bom:Californium-RELEASE")
-
         // Logging
         compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
         testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 
         // JUnit5
-        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.2'
-        testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.2'
+        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.1'
+        testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.1'
     }
 
     test {

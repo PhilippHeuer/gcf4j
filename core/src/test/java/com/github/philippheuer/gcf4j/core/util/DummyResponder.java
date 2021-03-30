@@ -1,11 +1,13 @@
 package com.github.philippheuer.gcf4j.core.util;
 
 import com.github.philippheuer.gcf4j.api.IMessageConnector;
-import com.github.philippheuer.gcf4j.api.domain.*;
+import com.github.philippheuer.gcf4j.api.domain.IGCFInstance;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMember;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.Duration;
-import java.util.Set;
 
 @Slf4j
 public class DummyResponder implements IMessageConnector {

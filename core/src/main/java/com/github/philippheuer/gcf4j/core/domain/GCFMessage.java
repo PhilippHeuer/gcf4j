@@ -4,7 +4,14 @@ import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageAttachment;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbed;
 import com.github.philippheuer.gcf4j.api.domain.IGCFReaction;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.Singular;
+import lombok.ToString;
 
 import java.time.Duration;
 import java.util.List;

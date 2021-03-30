@@ -2,9 +2,17 @@ package com.github.philippheuer.gcf4j.core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.philippheuer.gcf4j.api.IMessageConnector;
-import com.github.philippheuer.gcf4j.api.domain.*;
+import com.github.philippheuer.gcf4j.api.domain.IGCFChannel;
+import com.github.philippheuer.gcf4j.api.domain.IGCFInstance;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMember;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 import io.opentracing.Span;
-import lombok.*;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * Provides information about the context in which a command was executed.
@@ -78,7 +86,7 @@ public class GCFMessageContext implements IGCFMessageContext {
 		this.connector = connector;
 	}
 
-	public static GCFMessageContext changeMessage(IGCFMessageContext ctx, IGCFMessage message) {
+	public static GCFMessageContext replaceMessage(IGCFMessageContext ctx, IGCFMessage message) {
 		return new GCFMessageContext(ctx.getSpan(), ctx.getInstance(), ctx.getChannel(), ctx.getAuthor(), message, ctx.getBotMember(), ctx.getConnector());
 	}
 

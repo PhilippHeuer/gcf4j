@@ -31,10 +31,11 @@ public class CommandManagerTest {
         var containsCommand = commandManager.parseMessage(ctx, Set.of("!"));
 
         Assertions.assertTrue(containsCommand);
-        Assertions.assertEquals(ctx.getMessage().getCommand(), "example");
-        Assertions.assertEquals(ctx.getMessage().getCommandPayload(), "--silent");
+        Assertions.assertEquals("example", ctx.getMessage().getCommand());
+        Assertions.assertEquals("--silent", ctx.getMessage().getCommandPayload());
 
-        commandManager.runCommand(ctx);
+        var response = commandManager.runCommand(ctx);
+        Assertions.assertEquals("helloworld", response.getMessage().getText());
     }
 
 }

@@ -2,7 +2,12 @@ package com.github.philippheuer.gcf4j.core.domain;
 
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbed;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbedField;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Singular;
+import lombok.ToString;
 
 import java.awt.*;
 import java.time.temporal.TemporalAccessor;

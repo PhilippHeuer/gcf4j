@@ -2,7 +2,12 @@ package com.github.philippheuer.gcf4j.core.domain;
 
 import com.github.philippheuer.gcf4j.api.domain.IGCFAttachmentType;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageAttachment;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
