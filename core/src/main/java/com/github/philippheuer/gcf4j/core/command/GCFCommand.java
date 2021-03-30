@@ -108,6 +108,10 @@ public abstract class GCFCommand implements IGCFCommand {
         });
     }
 
+    public void setVisibleToEveryone(Boolean visible) {
+        this.isVisibleToEveryone = true;
+    }
+
     public IGCFMessageContext onSuperExecution(IGCFMessageContext ctx) {
         var commandContext = new GCFCommandContext(ctx, OptionUtils.parseCommandLineArgs(OPTIONS, ctx.getMessage().getCommandPayload()), this);
         return onExecution(commandContext);

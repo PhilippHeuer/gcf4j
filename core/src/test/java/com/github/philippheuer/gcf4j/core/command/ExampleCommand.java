@@ -28,6 +28,7 @@ public class ExampleCommand extends GCFCommand {
 
     public ExampleCommand() {
         super("example", Set.of("exx"), "test", "a simple example command", List.of(OPTION_SILENT), List.of(EXAMPLE_SILENT));
+        setVisibleToEveryone(true);
     }
 
     public IGCFMessageContext onExecution(IGCFMessageContext ctx) {

@@ -45,6 +45,13 @@ public interface IGCFCommand {
     Boolean isVisibleToEveryone();
 
     /**
+     * is the command visible to everyone regardless of usage permissions?
+     *
+     * @param visible is visible?
+     */
+    void setVisibleToEveryone(Boolean visible);
+
+    /**
      * this will call the command specific onExecution after some preprocessing
      *
      * @param ctx IGCFMessageContext
