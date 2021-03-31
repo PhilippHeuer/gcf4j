@@ -228,7 +228,7 @@ public class CommandManager implements ICommandManager {
             }
         } catch (Exception ex) {
             // can happen if the command can't be found, but shouldn't happen
-            log.debug("unexpected error, aborting command execution! {}", ex.getMessage());
+            log.debug("unexpected error, aborting command execution! {}", ex.getMessage(), ex);
         } finally {
             span.finish();
         }
