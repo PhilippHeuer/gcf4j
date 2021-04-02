@@ -12,12 +12,13 @@ import lombok.ToString;
 import java.awt.*;
 import java.time.temporal.TemporalAccessor;
 import java.util.List;
+import java.util.Map;
 
+@Builder
 @Getter
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Builder
 public class GCFMessageEmbed implements IGCFMessageEmbed {
 
     /**
@@ -55,5 +56,15 @@ public class GCFMessageEmbed implements IGCFMessageEmbed {
      * {@inheritDoc}
      */
     private TemporalAccessor timestamp;
+
+    /**
+     * {@inheritDoc}
+     */
+    private Map<String, Object> data;
+
+    /**
+     * {@inheritDoc}
+     */
+    private String alternativeText;
 
 }
