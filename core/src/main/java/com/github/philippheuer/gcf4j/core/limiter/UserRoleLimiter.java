@@ -30,11 +30,13 @@ public class UserRoleLimiter implements IExecutionLimiter {
         log.debug("{} checking if user {} [{}] has one of the allowed rules {}.", getClass().getSimpleName(), ctx.getAuthor().getId(), ctx.getAuthor().getRoles(), allowedRoles.stream().map(r -> r.getId()).collect(Collectors.joining(", ")));
 
         for (var role : allowedRoles) {
-            for (var userRole : ctx.getAuthor().getRoles()) {
-                if (userRole.getName().equalsIgnoreCase(role.getName()) && userRole.getScope().equalsIgnoreCase(role.getScope())) {
-                    return true;
-                } else if (userRole.getId().equalsIgnoreCase(role.getId()) && userRole.getScope().equalsIgnoreCase(role.getScope())) {
-                    return true;
+            if (ctx.getAuthor().getRoles() != null) {
+                for (var userRole : ctx.getAuthor().getRoles()) {
+                    if (userRole.getName().equalsIgnoreCase(role.getName()) && userRole.getScope().equalsIgnoreCase(role.getScope())) {
+                        return true;
+                    } else if (userRole.getId().equalsIgnoreCase(role.getId()) && userRole.getScope().equalsIgnoreCase(role.getScope())) {
+                        return true;
+                    }
                 }
             }
         }
