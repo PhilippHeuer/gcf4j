@@ -192,7 +192,9 @@ public class CommandManager implements ICommandManager {
     }
 
     /**
-     * Run Command
+     * Runs the command, does not check permissions or that the command is valid.
+     * <p>
+     * Please handle CommandManager#isCommand and CommandManager#hasPermissions accordingly.
      *
      * @param ctx the message context, parseMessage needs to be called on the ctx before calling this
      */
@@ -216,16 +218,8 @@ public class CommandManager implements ICommandManager {
         }
 
         try {
-            if (isCommand(ctx)) {
-                if (hasPermissions(ctx)) {
-                    var cmd = getCommand(ctx.getMessage().getCommand()).get();
-                    response = cmd.onSuperExecution(ctx);
-                } else {
-                    log.debug("rejected command execution based on command limiters!");
-                }
-            } else {
-                log.debug("no command named {} has been registered!", ctx.getMessage().getCommand());
-            }
+            var cmd = getCommand(ctx.getMessage().getCommand()).get();
+            response = cmd.onSuperExecution(ctx);
         } catch (Exception ex) {
             // can happen if the command can't be found, but shouldn't happen
             log.debug("unexpected error, aborting command execution! {}", ex.getMessage(), ex);
