@@ -57,14 +57,4 @@ public class GCFMessageEmbed implements IGCFMessageEmbed {
      */
     private TemporalAccessor timestamp;
 
-    /**
-     * {@inheritDoc}
-     */
-    private Map<String, Object> data;
-
-    /**
-     * {@inheritDoc}
-     */
-    private String alternativeText;
-
 }

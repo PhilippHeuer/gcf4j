@@ -2,6 +2,7 @@ package com.github.philippheuer.gcf4j.api.domain;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 
 public interface IGCFMessage {
 
@@ -66,4 +67,13 @@ public interface IGCFMessage {
      */
     List<IGCFReaction> getReactions();
 
+    /**
+     * @return true, if the response is ephemeral / only visible to the sender
+     */
+    Boolean getEphemeral();
+
+    /**
+     * @return gets a map with values used to render templates
+     */
+    Map<String, Object> getData();
 }

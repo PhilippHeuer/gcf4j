@@ -21,14 +21,4 @@ public interface IGCFMessageEmbed {
 
     TemporalAccessor getTimestamp();
 
-    /**
-     * @return data that is used to render title / description / footer / alternative text
-     */
-    Map<String, Object> getData();
-
-    /**
-     * @return alternative text if embeds are not supported
-     */
-    String getAlternativeText();
-
 }

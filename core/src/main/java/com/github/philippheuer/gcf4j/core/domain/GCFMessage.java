@@ -12,9 +12,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.Singular;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @AllArgsConstructor
@@ -71,5 +73,16 @@ public class GCFMessage implements IGCFMessage {
      * {@inheritDoc}
      */
     private Duration selfDestruct;
+
+    /**
+     * {@inheritDoc}
+     */
+    @Accessors(prefix = "")
+    private Boolean ephemeral;
+
+    /**
+     * {@inheritDoc}
+     */
+    private Map<String, Object> data;
 
 }
