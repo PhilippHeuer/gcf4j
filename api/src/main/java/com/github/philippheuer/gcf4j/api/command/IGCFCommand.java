@@ -1,6 +1,7 @@
 package com.github.philippheuer.gcf4j.api.command;
 
 import com.github.philippheuer.gcf4j.api.IExecutionLimiter;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbed;
 
@@ -29,6 +30,11 @@ public interface IGCFCommand {
      * @return the command description
      */
     String getDescription();
+
+    /**
+     * @return the command scope
+     */
+    String getScope();
 
     /**
      * @return all command options
@@ -91,10 +97,10 @@ public interface IGCFCommand {
      * responds with a message
      *
      * @param ctx IGCFMessageContext
-     * @param messageEmbed IGCFMessageEmbed
+     * @param message IGCFMessageEmbed
      * @return IGCFMessageContext of the response
      */
-    IGCFMessageContext respondWithMessage(IGCFMessageContext ctx, IGCFMessageEmbed messageEmbed);
+    IGCFMessageContext respondWithMessage(IGCFMessageContext ctx, IGCFMessage message);
 
     /**
      * responds with a simple message

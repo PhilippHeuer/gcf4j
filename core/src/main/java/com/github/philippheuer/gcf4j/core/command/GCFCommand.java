@@ -5,6 +5,7 @@ import com.github.philippheuer.gcf4j.api.command.IGCFCommand;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommandContext;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommandOption;
 import com.github.philippheuer.gcf4j.api.command.IGCFUsageExample;
+import com.github.philippheuer.gcf4j.api.domain.IGCFMessage;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageContext;
 import com.github.philippheuer.gcf4j.api.domain.IGCFMessageEmbed;
 import com.github.philippheuer.gcf4j.core.domain.GCFMessage;
@@ -15,7 +16,7 @@ import com.github.philippheuer.gcf4j.core.util.OptionUtils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Singular;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
@@ -34,15 +35,18 @@ public abstract class GCFCommand implements IGCFCommand {
     @Getter
     private final Options OPTIONS = new Options();
 
-    private String name;
+    protected String name;
 
-    private Set<String> aliases;
+    protected Set<String> aliases;
 
-    private String category;
+    protected String category;
 
     protected String description;
 
-    @Getter
+    @Setter
+    protected String scope;
+
+    @Setter
     private List<IGCFCommandOption> commandOptions;
 
     private List<IGCFUsageExample> usageExamples;
@@ -123,12 +127,8 @@ public abstract class GCFCommand implements IGCFCommand {
     @Override
     public abstract IGCFMessageContext onExecution(IGCFCommandContext ctx);
 
-    public IGCFMessageContext respondWithMessage(IGCFMessageContext ctx, IGCFMessageEmbed messageEmbed) {
-        return GCFMessageContext.replaceMessage(ctx, GCFMessage.builder()
-                .text(messageEmbed.getTitle())
-                .messageEmbed(messageEmbed)
-                .build()
-        );
+    public IGCFMessageContext respondWithMessage(IGCFMessageContext ctx, IGCFMessage message) {
+        return GCFMessageContext.replaceMessage(ctx, message);
     }
 
     public IGCFMessageContext respondWithSimpleMessage(IGCFMessageContext ctx, String title, String content, Color color) {
@@ -138,7 +138,7 @@ public abstract class GCFCommand implements IGCFCommand {
                 .color(color)
                 .build();
 
-        return respondWithMessage(ctx, messageEmbed);
+        return respondWithMessage(ctx, GCFMessage.builder().text(content).messageEmbed(messageEmbed).build());
     }
 
     public IGCFMessageContext respondWithUnknownCommand(IGCFMessageContext ctx, String cmdName) {
@@ -148,7 +148,7 @@ public abstract class GCFCommand implements IGCFCommand {
                 .description(cmdName + " is not a valid command")
                 .build();
 
-        return respondWithMessage(ctx, permErrorMsg);
+        return respondWithMessage(ctx, GCFMessage.builder().text(permErrorMsg.getDescription()).messageEmbed(permErrorMsg).ephemeral(true).build());
     }
 
     public IGCFMessageContext respondWithSyntaxErrorHelp(IGCFMessageContext ctx, IGCFCommand command) {
@@ -165,6 +165,6 @@ public abstract class GCFCommand implements IGCFCommand {
         }
         embed = embed.field(GCFMessageEmbedField.builder().key("Examples").value(examplesStringBuffer.toString()).inline(false).build());
 
-        return respondWithMessage(ctx, embed.build());
+        return respondWithMessage(ctx, GCFMessage.builder().text("Syntax Error!").messageEmbed(embed.build()).ephemeral(true).build());
     }
 }
