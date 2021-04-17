@@ -1,6 +1,7 @@
 package com.github.philippheuer.gcf4j.core.command;
 
 import com.github.philippheuer.gcf4j.api.command.GCFCommandOptionType;
+import com.github.philippheuer.gcf4j.api.command.GCFCommandScopes;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommandContext;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommandOption;
 import com.github.philippheuer.gcf4j.api.command.IGCFUsageExample;
@@ -28,7 +29,7 @@ public class ExampleCommand extends GCFCommand {
             .build();
 
     public ExampleCommand() {
-        super("example", Set.of("exx"), "test", "a simple example command", List.of(OPTION_SILENT), List.of(EXAMPLE_SILENT));
+        super("example", Set.of("exx"), "test", "a simple example command", List.of(OPTION_SILENT), List.of(EXAMPLE_SILENT), true, GCFCommandScopes.GLOBAL);
         setVisibleToEveryone(true);
     }
 

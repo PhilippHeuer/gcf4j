@@ -1,6 +1,7 @@
 package com.github.philippheuer.gcf4j.core.command;
 
 import com.github.philippheuer.gcf4j.api.IExecutionLimiter;
+import com.github.philippheuer.gcf4j.api.command.GCFCommandScopes;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommand;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommandContext;
 import com.github.philippheuer.gcf4j.api.command.IGCFCommandOption;
@@ -76,17 +77,41 @@ public abstract class GCFCommand implements IGCFCommand {
      * @param aliases command aliases
      * @param category command category
      * @param description holds a general description about the command
+     * @param isVisibleToEveryone command is visible?
+     * @param scope command scope
+     */
+    public GCFCommand(String name, Set<String> aliases, String category, String description, Boolean isVisibleToEveryone, GCFCommandScopes scope) {
+        this.name = name;
+        this.aliases = aliases;
+        this.category = category;
+        this.description = description;
+        this.isVisibleToEveryone = isVisibleToEveryone;
+        this.scope = scope.name();
+    }
+
+    /**
+     * Constructor
+     *
+     * @param name command name
+     * @param aliases command aliases
+     * @param category command category
+     * @param description holds a general description about the command
      * @param options list of command options / parameters
      * @param usageExamples contains a list of usage examples
+     * @param isVisibleToEveryone command is visible?
+     * @param scope command scope
      */
-    public GCFCommand(String name, Set<String> aliases, String category, String description, List<IGCFCommandOption> options, List<IGCFUsageExample> usageExamples) {
+    public GCFCommand(String name, Set<String> aliases, String category, String description, List<IGCFCommandOption> options, List<IGCFUsageExample> usageExamples, Boolean isVisibleToEveryone, GCFCommandScopes scope) {
         this.name = name;
         this.aliases = aliases;
         this.category = category;
         this.description = description;
 
         registerCommandOption(options.toArray(new IGCFCommandOption[0]));
-        this.usageExamples = usageExamples;
+        addUsageExample(usageExamples.toArray(new IGCFUsageExample[0]));
+
+        this.isVisibleToEveryone = isVisibleToEveryone;
+        this.scope = scope.name();
     }
 
     @Getter
