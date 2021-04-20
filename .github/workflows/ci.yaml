@@ -25,8 +25,8 @@ jobs:
       # setup
       - name: prepare
         run: |
-          curl -L -s -O /usr/local/bin/cid https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
-          chmod +x /usr/local/bin/cid
+          curl -L -s -O /usr/bin/cid https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
+          chmod +x /usr/bin/cid
           cid version
       # show env
       - name: print env
