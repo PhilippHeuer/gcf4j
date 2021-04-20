@@ -44,7 +44,7 @@ subprojects {
 
     // Lombok
     lombok {
-        version.set("1.18.18")
+        version.set("1.18.20")
     }
 
     // Java Setup
