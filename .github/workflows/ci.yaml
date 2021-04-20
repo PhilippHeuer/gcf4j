@@ -20,6 +20,7 @@ jobs:
       # setup
       - name: Prepare Environment
         run: |
+          mkdir -p /home/runner/.local/bin
           curl -o /home/runner/.local/bin/cid -L https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
           chmod +x /home/runner/.local/bin/cid
           cid version
