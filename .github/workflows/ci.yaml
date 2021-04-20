@@ -17,17 +17,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # project checkout
-      - uses: actions/checkout@v2.3.4
-        name: Checkout
-        with:
-          fetch-depth: 1000
       # setup
-      - name: prepare
+      - name: Prepare Environment
         run: |
-          curl -L -s -O /usr/bin/cid https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
+          curl -L -O /usr/bin/cid https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
           chmod +x /usr/bin/cid
           cid version
+      # project checkout
+      - uses: actions/checkout@v2.3.4
+        name: Repository Checkout
+        with:
+          fetch-depth: 1000
       # show env
       - name: print env
         run: |
