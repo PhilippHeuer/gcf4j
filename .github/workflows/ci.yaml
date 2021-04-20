@@ -26,8 +26,7 @@ jobs:
           mkdir -p $BIN_TOOL_PATH
           curl -L -o $BIN_TOOL_PATH/cid https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
           chmod +x $BIN_TOOL_PATH/cid
-          export PATH=$BIN_TOOL_PATH;$PATH
-          cid version
+          $BIN_TOOL_PATH/cid version
       # project checkout
       - uses: actions/checkout@v2.3.4
         name: Repository Checkout
