@@ -23,11 +23,12 @@ jobs:
         name: Checkout
         with:
           fetch-depth: 1000
-      # jdk setup
-      - uses: actions/setup-java@v1.4.3
-        name: Setup JDK15
-        with:
-          java-version: 15
+      # setup
+      - name: prepare
+        run: |
+          curl -L -s -O /usr/local/bin/cid https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
+          chmod +x /usr/local/bin/cid
+          cid version
       # show env
       - name: print env
         run: |
