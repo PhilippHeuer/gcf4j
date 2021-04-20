@@ -10,6 +10,9 @@ on:
       - ".gitignore"
       - ".editorconfig"
 
+env:
+  BIN_TOOL_PATH: /home/runner/work/_temp/bin
+
 jobs:
   # stages
   build:
@@ -20,9 +23,10 @@ jobs:
       # setup
       - name: Prepare Environment
         run: |
-          mkdir -p /home/runner/.local/bin
-          curl -o /home/runner/.local/bin/cid -L https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
-          chmod +x /home/runner/.local/bin/cid
+          mkdir -p $BIN_TOOL_PATH
+          curl -L -o $BIN_TOOL_PATH/cid https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
+          chmod +x $BIN_TOOL_PATH/*
+          export PATH=BIN_TOOL_PATH;$PATH
           cid version
       # project checkout
       - uses: actions/checkout@v2.3.4
