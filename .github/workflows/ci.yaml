@@ -23,17 +23,12 @@ jobs:
           mkdir -p $AGENT_TOOLSDIRECTORY/bin
           export PATH=$AGENT_TOOLSDIRECTORY/bin:$PATH
           curl -L -o $AGENT_TOOLSDIRECTORY/bin/cid https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
-          chmod +x $AGENT_TOOLSDIRECTORY/bin/cid
           cid version
       # project checkout
       - uses: actions/checkout@v2.3.4
         name: Repository Checkout
         with:
           fetch-depth: 1000
-      # show env
-      - name: print env
-        run: |
-          printenv
       # build
       - name: build
         run: |
