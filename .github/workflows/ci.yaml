@@ -10,6 +10,9 @@ on:
       - ".gitignore"
       - ".editorconfig"
 
+env:
+  PATH: $AGENT_TOOLSDIRECTORY/bin:$PATH
+
 jobs:
   # stages
   build:
