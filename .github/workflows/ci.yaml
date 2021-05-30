@@ -20,8 +20,6 @@ jobs:
       # setup
       - uses: cidverse/ghact-cid-setup@main
         name: CID Setup
-        with:
-          version: "1.0.0"
       # project checkout
       - uses: actions/checkout@v2.3.4
         name: Repository Checkout
@@ -30,4 +28,5 @@ jobs:
       # build
       - name: build
         run: |
+          printenv
           cid build
