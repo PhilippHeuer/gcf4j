@@ -28,5 +28,7 @@ jobs:
       # build
       - name: build
         run: |
-          printenv
           cid build
+      - name: test
+        run: |
+          cid test
