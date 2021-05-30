@@ -18,13 +18,10 @@ jobs:
 
     steps:
       # setup
-      - name: Prepare Environment
-        run: |
-          mkdir -p $AGENT_TOOLSDIRECTORY/bin
-          export PATH=$AGENT_TOOLSDIRECTORY/bin:$PATH
-          curl -L -o $AGENT_TOOLSDIRECTORY/bin/cid https://github.com/PhilippHeuer/cid/releases/download/latest/linux_amd64
-          chmod 755 $AGENT_TOOLSDIRECTORY/bin/cid
-          cid version
+      - uses: cidverse/ghact-cid-setup@main
+        name: CID Setup
+        with:
+          version: "1.0.0"
       # project checkout
       - uses: actions/checkout@v2.3.4
         name: Repository Checkout
@@ -33,5 +30,4 @@ jobs:
       # build
       - name: build
         run: |
-          export PATH=$AGENT_TOOLSDIRECTORY/bin:$PATH
           cid build
