@@ -29,4 +29,6 @@ jobs:
       - name: build
         run: |
           printenv
+          ls -la /opt/hostedtoolcache
+          ls -la /opt/hostedtoolcache/cid/bin
           cid build
