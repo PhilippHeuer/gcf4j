@@ -20,8 +20,6 @@ jobs:
       # setup
       - uses: cidverse/ghact-cid-setup@main
         name: CID Setup
-        env:
-          INPUT_VERSION: 5.0.0
       # project checkout
       - uses: actions/checkout@v2
         name: Repository Checkout
