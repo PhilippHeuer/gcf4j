@@ -30,9 +30,6 @@ jobs:
         run: |
           cid info
       # build
-      - name: env
-        run: |
-          printenv
       - name: build
         run: |
           cid stage build
