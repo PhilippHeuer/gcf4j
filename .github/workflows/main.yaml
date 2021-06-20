@@ -25,10 +25,26 @@ jobs:
         name: Repository Checkout
         with:
           fetch-depth: 0
+      # print execution plan
+      - name: CI Execution Plan
+        run: |
+          cid info
       # build
+      - name: env
+        run: |
+          printenv
       - name: build
         run: |
-          cid build
+          cid stage build
       - name: test
         run: |
-          cid test
+          cid stage test
+      - name: package
+        run: |
+          cid stage package
+      - name: sast
+        run: |
+          cid stage sast
+      - name: publish
+        run: |
+          cid stage publish
