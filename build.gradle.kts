@@ -18,6 +18,9 @@ allprojects {
     tasks {
         // javadoc / html5 support
         withType<Javadoc> {
+            // hide javadoc warnings (a lot from delombok)
+            (options as StandardJavadocDocletOptions).addStringOption("Xdoclint:none", "-quiet")
+
             if (JavaVersion.current().isJava9Compatible) {
                 (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
             }
@@ -102,7 +105,15 @@ subprojects {
     }
 
     signing {
-        useGpgCmd()
+        val signingKeyId: String? by project
+        val signingKey: String? by project
+        val signingPassword: String? by project
+        if (signingKey != null) {
+            useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
+        } else {
+            useGpgCmd()
+        }
+
         sign(publishing.publications["main"])
     }
 }
