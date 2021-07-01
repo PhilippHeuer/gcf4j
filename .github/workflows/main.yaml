@@ -43,5 +43,12 @@ jobs:
         run: |
           cid stage sast
       - name: publish
+        env:
+          GPG_SIGN_KEYID: ${{ secrets.GPG_SIGN_KEYID }}
+          GPG_SIGN_PRIVATEKEY: ${{ secrets.GPG_SIGN_PRIVATEKEY }}
+          GPG_SIGN_PASSWORD: ${{ secrets.GPG_SIGN_PASSWORD }}
+          MAVEN_REPO_URL: ${{ secrets.MAVEN_REPO_URL }}
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+          MAVEN_REPO_USERNAME: ${{ secrets.MAVEN_REPO_USERNAME }}
         run: |
           cid stage publish
