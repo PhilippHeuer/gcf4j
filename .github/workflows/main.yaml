@@ -51,4 +51,6 @@ jobs:
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
           MAVEN_REPO_USERNAME: ${{ secrets.MAVEN_REPO_USERNAME }}
         run: |
+          echo "Maven REPO: $MAVEN_REPO_URL"
+          echo "Signing KeyID: GPG_SIGN_KEYID"
           cid stage publish
