@@ -50,6 +50,5 @@ jobs:
           MAVEN_REPO_URL: ${{ secrets.MAVEN_REPO_URL }}
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
           MAVEN_REPO_USERNAME: ${{ secrets.MAVEN_REPO_USERNAME }}
-          CID_DEBUG: "true"
         run: |
           cid stage publish
