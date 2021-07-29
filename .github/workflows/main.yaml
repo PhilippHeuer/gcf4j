@@ -30,20 +30,21 @@ jobs:
         run: |
           cid info
       # build
-      #- name: build
-      #  run: |
-      #    cid stage build
-      #- name: test
-      #  run: |
-      #    cid stage test
-      #- name: package
-      #  run: |
-      #    cid stage package
-      #- name: sast
-      #  run: |
-      #    cid stage sast
+      - name: build
+        run: |
+          cid stage build
+      - name: test
+        run: |
+          cid stage test
+      - name: package
+        run: |
+          cid stage package
+      - name: sast
+        run: |
+          cid stage sast
       - name: publish
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_SIGN_KEYID: ${{ secrets.GPG_SIGN_KEYID }}
           GPG_SIGN_PRIVATEKEY: ${{ secrets.GPG_SIGN_PRIVATEKEY }}
           GPG_SIGN_PASSWORD: ${{ secrets.GPG_SIGN_PASSWORD }}
